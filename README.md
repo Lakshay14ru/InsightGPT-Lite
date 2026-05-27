@@ -18,11 +18,10 @@ An AI-Powered Data Analytics and Retrieval-Augmented Generation (RAG) Platform b
 
 ---
 
-## 📂 Project Structure
 
 ## 📂 Project Structure
 
-```text
+``` text
 InsightGPT_Lite/
 │
 ├── app.py

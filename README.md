@@ -20,20 +20,20 @@ An AI-Powered Data Analytics and Retrieval-Augmented Generation (RAG) Platform b
 
 ## 📂 Project Structure
 
+```text
 InsightGPT_Lite/
 │
 ├── app.py
 ├── uploads/
-│ └── Titanic-Dataset.csv
+│   └── Titanic-Dataset.csv
 │
 ├── utils/
-│ ├── __init__.py
-│ ├── data_loader.py
-│ ├── preprocessing.py
-│ ├── visualization.py
-│ └── helper.py
-
----
+│   ├── __init__.py
+│   ├── data_loader.py
+│   ├── preprocessing.py
+│   ├── visualization.py
+│   └── helper.py
+```
 
 ## 🛠 Technologies Used
 

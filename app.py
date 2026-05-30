@@ -3,6 +3,13 @@ import pandas as pd
 
 from utils.preprocessing import remove_duplicates, fill_missing_values
 from utils.visualization import create_histogram, create_scatter
+from utils.ai_engine import ask_gemini
+from utils.rag_pipeline import split_text
+from utils.embedding_model import create_embeddings
+
+# ===============================
+# PAGE CONFIG
+# ===============================
 
 st.set_page_config(
     page_title="InsightGPT Lite",
@@ -13,7 +20,17 @@ st.set_page_config(
 st.title("📊 InsightGPT Lite")
 st.subheader("AI-Powered Data Analytics and RAG Platform")
 
-# File Upload
+# ===============================
+# SIDEBAR
+# ===============================
+
+st.sidebar.title("InsightGPT Lite")
+st.sidebar.info("AI-Powered Data Analytics Platform")
+
+# ===============================
+# FILE UPLOAD
+# ===============================
+
 uploaded_file = st.file_uploader(
     "Upload your CSV file",
     type=["csv"]
@@ -21,12 +38,44 @@ uploaded_file = st.file_uploader(
 
 if uploaded_file is not None:
 
+    # ===============================
+    # LOAD DATASET
+    # ===============================
+
     df = pd.read_csv(uploaded_file)
 
     st.success("File uploaded successfully!")
 
+    # ===============================
+    # RAG PIPELINE TESTING
+    # ===============================
+
+    dataset_text = df.to_string(index=False)
+
+    chunks = split_text(dataset_text)
+
+    embeddings = create_embeddings(chunks[:5])
+
+    st.write("## 🧠 RAG Statistics")
+
+    st.write(f"Chunks Created: {len(chunks)}")
+
+    st.write(f"Embedding Shape: {embeddings.shape}")
+
+    if chunks:
+        st.write("### Sample Chunk")
+        st.text(chunks[0][:500])
+
+    # ===============================
+    # DATASET PREVIEW
+    # ===============================
+
     st.write("### Dataset Preview")
     st.dataframe(df.head())
+
+    # ===============================
+    # DATASET INFORMATION
+    # ===============================
 
     st.write("### Dataset Information")
 
@@ -36,8 +85,16 @@ if uploaded_file is not None:
     col2.metric("Columns", df.shape[1])
     col3.metric("Missing Values", df.isnull().sum().sum())
 
+    # ===============================
+    # DATA TYPES
+    # ===============================
+
     st.write("### Column Data Types")
     st.dataframe(df.dtypes.astype(str))
+
+    # ===============================
+    # DATA CLEANING
+    # ===============================
 
     st.write("### Data Cleaning")
 
@@ -49,9 +106,13 @@ if uploaded_file is not None:
         df = fill_missing_values(df)
         st.success("Missing values filled!")
 
+    # ===============================
+    # VISUALIZATION
+    # ===============================
+
     st.write("### Data Visualization")
 
-    numeric_columns = df.select_dtypes(include=['number']).columns
+    numeric_columns = df.select_dtypes(include=["number"]).columns
 
     if len(numeric_columns) > 0:
 
@@ -66,13 +127,57 @@ if uploaded_file is not None:
 
     if len(numeric_columns) >= 2:
 
-        x_col = st.selectbox("X-axis", numeric_columns)
+        x_col = st.selectbox(
+            "X-axis",
+            numeric_columns,
+            key="x_axis"
+        )
 
-        y_col = st.selectbox("Y-axis", numeric_columns, index=1)
+        y_col = st.selectbox(
+            "Y-axis",
+            numeric_columns,
+            index=1,
+            key="y_axis"
+        )
 
         scatter_fig = create_scatter(df, x_col, y_col)
 
         st.plotly_chart(scatter_fig)
 
-st.sidebar.title("InsightGPT Lite")
-st.sidebar.info("AI-Powered Data Analytics Platform")
+    # ===============================
+    # AI INSIGHTS
+    # ===============================
+
+    st.write("## 🤖 Ask AI About Your Dataset")
+
+    user_question = st.text_input(
+        "Enter your question about the dataset"
+    )
+
+    if st.button("Generate AI Insight"):
+
+        if user_question.strip() == "":
+            st.warning("Please enter a question.")
+
+        else:
+
+            with st.spinner("Analyzing dataset..."):
+
+                dataset_context = df.head(20).to_string()
+
+                prompt = f"""
+Dataset Preview:
+
+{dataset_context}
+
+User Question:
+{user_question}
+
+Provide detailed analytical insights based on the dataset.
+"""
+
+                response = ask_gemini(prompt)
+
+                st.write("### AI Response")
+
+                st.success(response)

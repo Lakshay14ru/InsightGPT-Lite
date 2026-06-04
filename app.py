@@ -6,6 +6,7 @@ from utils.visualization import create_histogram, create_scatter
 from utils.ai_engine import ask_gemini
 from utils.rag_pipeline import split_text
 from utils.embedding_model import create_embeddings
+from utils.chroma_db import store_chunks, search_chunks
 
 # ===============================
 # PAGE CONFIG
@@ -55,6 +56,10 @@ if uploaded_file is not None:
     chunks = split_text(dataset_text)
 
     embeddings = create_embeddings(chunks[:5])
+
+    store_chunks(chunks)
+
+    st.success("Chunks stored in ChromaDB successfully!")
 
     st.write("## 🧠 RAG Statistics")
 
@@ -163,20 +168,30 @@ if uploaded_file is not None:
 
             with st.spinner("Analyzing dataset..."):
 
-                dataset_context = df.head(20).to_string()
+                results = search_chunks(user_question)
+                retrieved_chunks = "\n\n".join(
+                results["documents"][0]
+)
 
                 prompt = f"""
-Dataset Preview:
+You are a data analytics assistant.
 
-{dataset_context}
+Relevant Dataset Context:
+
+{retrieved_chunks}
 
 User Question:
+
 {user_question}
 
-Provide detailed analytical insights based on the dataset.
+Provide detailed analytical insights using only the retrieved context.
 """
 
                 response = ask_gemini(prompt)
+
+                st.write("### Retrieved Chunks")
+
+                st.text(retrieved_chunks[:1000])
 
                 st.write("### AI Response")
 

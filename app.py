@@ -23,12 +23,42 @@ st.set_page_config(
 st.title("📊 InsightGPT Lite")
 st.subheader("AI-Powered Data Analytics and RAG Platform")
 
+tab1, tab2, tab3, tab4 = st.tabs(
+    [
+        "📊 Dashboard",
+        "🧹 Cleaning",
+        "📈 Visualizations",
+        "🤖 AI Insights"
+    ]
+)
+
 # ===============================
 # SIDEBAR
 # ===============================
 
 st.sidebar.title("InsightGPT Lite")
 st.sidebar.info("AI-Powered Data Analytics Platform")
+st.sidebar.markdown("""
+### Features
+
+✅ CSV Upload
+
+✅ Dataset Preview
+
+✅ Data Cleaning
+
+✅ Dataset Filtering
+
+✅ Interactive Visualizations
+
+✅ PDF Report Generation
+
+✅ AI Insights
+
+✅ ChromaDB Integration
+
+✅ Retrieval-Augmented Generation (RAG)
+""")
 
 # ===============================
 # FILE UPLOAD
@@ -61,165 +91,170 @@ if uploaded_file is not None:
 
     store_chunks(chunks)
 
-    st.success("Chunks stored in ChromaDB successfully!")
+    with tab1:
 
-    st.write("## 🧠 RAG Statistics")
+        st.success("File uploaded successfully!")
 
-    st.write(f"Chunks Created: {len(chunks)}")
+        st.success("Chunks stored in ChromaDB successfully!")
 
-    st.write(f"Embedding Shape: {embeddings.shape}")
+        st.write("## 🧠 RAG Statistics")
 
-    if chunks:
-        st.write("### Sample Chunk")
-        st.text(chunks[0][:500])
+        st.write(f"Chunks Created: {len(chunks)}")
 
-    # ===============================
-    # DATASET PREVIEW
-    # ===============================
+        st.write(f"Embedding Shape: {embeddings.shape}")
 
-    st.write("### Dataset Preview")
-    st.dataframe(df.head())
+        if chunks:
+            st.write("### Sample Chunk")
+            st.text(chunks[0][:500])
 
-    # ===============================
-    # DATASET INFORMATION
-    # ===============================
+        # ===============================
+        # DATASET PREVIEW
+        # ===============================
 
-    st.write("### Dataset Information")
+        st.write("### Dataset Preview")
+        st.dataframe(df.head())
 
-    col1, col2, col3 = st.columns(3)
+        # ===============================
+        # DATASET INFORMATION
+        # ===============================
 
-    col1.metric("Rows", df.shape[0])
-    col2.metric("Columns", df.shape[1])
-    col3.metric("Missing Values", df.isnull().sum().sum())
+        st.write("### Dataset Information")
 
-    # ===============================
-    # DATA TYPES
-    # ===============================
+        col1, col2, col3 = st.columns(3)
 
-    st.write("### Column Data Types")
-    st.dataframe(df.dtypes.astype(str))
+        col1.metric("Rows", df.shape[0])
+        col2.metric("Columns", df.shape[1])
+        col3.metric("Missing Values", df.isnull().sum().sum())
 
-    # ===============================
-    # DATASET FILTERS
-    # ===============================
+        # ===============================
+        # DATA TYPES
+        # ===============================
 
-    st.write("### Dataset Filters")
+        st.write("### Column Data Types")
+        st.dataframe(df.dtypes.astype(str))
 
-    filter_columns = df.columns.tolist()
+        # ===============================
+        # DATASET FILTERS
+        # ===============================
 
-    selected_filter_column = st.selectbox(
-        "Select Column to Filter",
-        filter_columns
-)
+        st.write("### Dataset Filters")
 
-    selected_values = st.multiselect(
-        "Select Values",
-        df[selected_filter_column].dropna().unique()
-)
+        filter_columns = df.columns.tolist()
 
-    if selected_values:
-        df = filter_dataframe(
-            df,
-            selected_filter_column,
-            selected_values
-    )
+        selected_filter_column = st.selectbox(
+            "Select Column to Filter",
+            filter_columns
+        )
 
-    st.success(f"{len(df)} records found.")
+        selected_values = st.multiselect(
+            "Select Values",
+            df[selected_filter_column].dropna().unique()
+        )
 
-    st.dataframe(df.head())
+        if selected_values:
 
-    # ===============================
-    # DATA CLEANING
-    # ===============================
+            df = filter_dataframe(
+                df,
+                selected_filter_column,
+                selected_values
+            )
 
-    st.write("### Data Cleaning")
+            st.success(f"{len(df)} records found.")
 
-    if st.button("Remove Duplicates"):
-        df = remove_duplicates(df)
-        st.success("Duplicates removed!")
-
-    if st.button("Fill Missing Values"):
-        df = fill_missing_values(df)
-        st.success("Missing values filled!")
+            st.dataframe(df.head())
     
-    csv = df.to_csv(index=False)
+    with tab2:
+        # ===============================
+        # DATA CLEANING
+        # ===============================
 
-    st.download_button(
-        label="📥 Download Dataset",
-        data=csv,
-        file_name="processed_dataset.csv",
-        mime="text/csv"
+        st.write("### Data Cleaning")
+
+        if st.button("Remove Duplicates"):
+            df = remove_duplicates(df)
+            st.success("Duplicates removed!")
+
+        if st.button("Fill Missing Values"):
+           df = fill_missing_values(df)
+           st.success("Missing values filled!")
+    
+        csv = df.to_csv(index=False)
+
+        st.download_button(
+            label="📥 Download Dataset",
+            data=csv,
+            file_name="processed_dataset.csv",
+            mime="text/csv"
 )
-    if st.button("📄 Generate PDF Report"):
-        report_path = generate_report(df)
-        with open(report_path, "rb") as file:
-            st.download_button(
-                label="⬇ Download PDF Report",
-                data=file,
-                file_name="InsightGPT_Report.pdf",
-                mime="application/pdf"
+        if st.button("📄 Generate PDF Report"):
+            report_path = generate_report(df)
+            with open(report_path, "rb") as file:
+                st.download_button(
+                    label="⬇ Download PDF Report",
+                    data=file,
+                    file_name="InsightGPT_Report.pdf",
+                    mime="application/pdf"
+        )
+    
+    with tab3:
+        # ===============================
+        # VISUALIZATION
+        # ===============================
+
+        st.write("### Data Visualization")
+        
+        numeric_columns = df.select_dtypes(include=["number"]).columns
+
+        if len(numeric_columns) > 0:
+            
+            selected_column = st.selectbox(
+                "Select column for histogram",
+                 numeric_columns
+        )
+            
+            hist_fig = create_histogram(df, selected_column)
+            
+            st.plotly_chart(hist_fig)
+
+        if len(numeric_columns) >= 2:
+            x_col = st.selectbox(
+                "X-axis",
+                numeric_columns,
+                key="x_axis"
         )
 
-    # ===============================
-    # VISUALIZATION
-    # ===============================
-
-    st.write("### Data Visualization")
-
-    numeric_columns = df.select_dtypes(include=["number"]).columns
-
-    if len(numeric_columns) > 0:
-
-        selected_column = st.selectbox(
-            "Select column for histogram",
-            numeric_columns
+            y_col = st.selectbox(
+                "Y-axis",
+                numeric_columns,
+                index=1,
+                key="y_axis"
         )
+            scatter_fig = create_scatter(df, x_col, y_col)
+            
+            st.plotly_chart(scatter_fig)
+    
 
-        hist_fig = create_histogram(df, selected_column)
+    with tab4:
+        # ===============================
+        # AI INSIGHTS
+        # ===============================
 
-        st.plotly_chart(hist_fig)
-
-    if len(numeric_columns) >= 2:
-
-        x_col = st.selectbox(
-            "X-axis",
-            numeric_columns,
-            key="x_axis"
-        )
-
-        y_col = st.selectbox(
-            "Y-axis",
-            numeric_columns,
-            index=1,
-            key="y_axis"
-        )
-
-        scatter_fig = create_scatter(df, x_col, y_col)
-
-        st.plotly_chart(scatter_fig)
-
-    # ===============================
-    # AI INSIGHTS
-    # ===============================
-
-    st.write("## 🤖 Ask AI About Your Dataset")
-
-    user_question = st.text_input(
-        "Enter your question about the dataset"
+        st.write("## 🤖 Ask AI About Your Dataset")
+        user_question = st.text_input(
+            "Enter your question about the dataset"
     )
 
-    if st.button("Generate AI Insight"):
+        if st.button(
+            "Generate AI Insight",
+            key="ai_button"):
+            if user_question.strip() == "":
+                st.warning("Please enter a question.")
 
-        if user_question.strip() == "":
-            st.warning("Please enter a question.")
-
-        else:
-
-            with st.spinner("Analyzing dataset..."):
-
-                results = search_chunks(user_question)
-                retrieved_chunks = "\n\n".join(
-                results["documents"][0]
+            else:
+                with st.spinner("Analyzing dataset..."):
+                    results = search_chunks(user_question)
+                    retrieved_chunks = "\n\n".join(
+                    results["documents"][0]
 )
 
                 prompt = f"""
@@ -245,3 +280,14 @@ Provide detailed analytical insights using only the retrieved context.
                 st.write("### AI Response")
 
                 st.success(response)
+st.markdown("---")
+
+st.markdown(
+    """
+    ### 🚀 InsightGPT Lite
+    AI-Powered Data Analytics and Retrieval-Augmented Query Platform
+
+    Developed by Lakshay Kundariya
+    Internship Project – BCA Data Science
+    """
+)

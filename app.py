@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 
+from utils.report_generator import generate_report
+from utils.filtering import filter_dataframe
 from utils.preprocessing import remove_duplicates, fill_missing_values
 from utils.visualization import create_histogram, create_scatter
 from utils.ai_engine import ask_gemini
@@ -98,6 +100,35 @@ if uploaded_file is not None:
     st.dataframe(df.dtypes.astype(str))
 
     # ===============================
+    # DATASET FILTERS
+    # ===============================
+
+    st.write("### Dataset Filters")
+
+    filter_columns = df.columns.tolist()
+
+    selected_filter_column = st.selectbox(
+        "Select Column to Filter",
+        filter_columns
+)
+
+    selected_values = st.multiselect(
+        "Select Values",
+        df[selected_filter_column].dropna().unique()
+)
+
+    if selected_values:
+        df = filter_dataframe(
+            df,
+            selected_filter_column,
+            selected_values
+    )
+
+    st.success(f"{len(df)} records found.")
+
+    st.dataframe(df.head())
+
+    # ===============================
     # DATA CLEANING
     # ===============================
 
@@ -110,6 +141,24 @@ if uploaded_file is not None:
     if st.button("Fill Missing Values"):
         df = fill_missing_values(df)
         st.success("Missing values filled!")
+    
+    csv = df.to_csv(index=False)
+
+    st.download_button(
+        label="📥 Download Dataset",
+        data=csv,
+        file_name="processed_dataset.csv",
+        mime="text/csv"
+)
+    if st.button("📄 Generate PDF Report"):
+        report_path = generate_report(df)
+        with open(report_path, "rb") as file:
+            st.download_button(
+                label="⬇ Download PDF Report",
+                data=file,
+                file_name="InsightGPT_Report.pdf",
+                mime="application/pdf"
+        )
 
     # ===============================
     # VISUALIZATION

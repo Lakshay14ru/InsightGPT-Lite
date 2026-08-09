@@ -8,6 +8,7 @@ from utils.filtering import filter_dataframe
 from utils.preprocessing import remove_duplicates, fill_missing_values
 from utils.visualization import create_histogram, create_scatter, create_box_plot, create_bar_chart, create_pie_chart, create_line_chart
 from utils.ai_engine import ask_gemini
+from utils.ai_analytics import generate_ai_dataset_summary
 from utils.rag_pipeline import split_text
 from utils.embedding_model import create_embeddings
 from utils.chroma_db import store_chunks, search_chunks
@@ -116,9 +117,26 @@ if uploaded_file is not None:
 
         st.write(f"Embedding Shape: {embeddings.shape}")
 
-        if chunks:
-            st.write("### Sample Chunk")
-            st.text(chunks[0][:500])
+    if chunks:
+        st.write("### 🧠 RAG Processing")
+        rag_col1, rag_col2 = st.columns(2)
+        with rag_col1:
+            st.metric(
+                "Text Chunks",
+                len(chunks)
+                )
+
+        with rag_col2:
+            st.metric(
+                "Embedding Dimensions",
+                embeddings.shape[1]
+                )
+
+        with st.expander("🔍 View Sample RAG Chunk"):
+            st.code(
+                chunks[0][:1000],
+                language="text"
+                )
 
         # ===============================
         # DATASET PREVIEW
@@ -195,6 +213,26 @@ if uploaded_file is not None:
 
         st.write("## 🧠 Automated EDA Summary")
         st.info(eda_summary) 
+
+        st.write("## 🤖 AI Dataset Summary")
+        if st.button(
+            "✨ Generate AI Dataset Summary",
+            key="ai_dataset_summary"
+            ):
+            with st.spinner(
+                "AI is analyzing your dataset..."
+                ):
+                ai_prompt = generate_ai_dataset_summary(
+                    df,
+                    summary,
+                    eda_summary
+                    )
+                ai_response = ask_gemini(
+                    ai_prompt
+                    )
+                st.write("### 🧠 AI Analysis")
+                st.success(ai_response)
+
         st.write("## 📈 Advanced EDA")
         st.write("### Unique Values")
         st.dataframe(
@@ -481,51 +519,141 @@ if uploaded_file is not None:
             )
 
     with tab4:
-        # ===============================
-        # AI INSIGHTS
-        # ===============================
-
         st.write("## 🤖 Ask AI About Your Dataset")
         user_question = st.text_input(
             "Enter your question about the dataset"
-    )
+        )
 
         if st.button(
             "Generate AI Insight",
-            key="ai_button"):
+            key="ai_button"
+        ):
             if user_question.strip() == "":
-                st.warning("Please enter a question.")
+
+                st.warning(
+                    "Please enter a question."
+                )
 
             else:
-                with st.spinner("Analyzing dataset..."):
-                    results = search_chunks(user_question)
+                with st.spinner(
+                    "Analyzing dataset..."
+                ):
+
+                    results = search_chunks(
+                        user_question
+                    )
+
                     retrieved_chunks = "\n\n".join(
-                    results["documents"][0]
-)
+                        results["documents"][0]
+                )
+
+
+                
+                outlier_results = detect_outliers(df) 
+                outlier_context = ""
+                for column, result in outlier_results.items():
+                    outlier_context += (
+                        f"{column}: "
+                        f"{result['Outliers']} outliers detected\n"
+                    )   
 
                 prompt = f"""
-You are a data analytics assistant.
+You are an expert data analytics assistant.
 
-Relevant Dataset Context:
+You are analyzing the user's uploaded dataset.
 
-{retrieved_chunks}
-
-User Question:
-
+USER QUESTION:
 {user_question}
 
-Provide detailed analytical insights using only the retrieved context.
+RAG RETRIEVED CONTEXT:
+{retrieved_chunks}
+
+STATISTICAL OUTLIER ANALYSIS:
+{outlier_context}
+
+INSTRUCTIONS:
+
+1. Answer the user's question using the
+   statistical analysis and retrieved context
+   provided above.
+
+2. For questions about outliers, use the
+   STATISTICAL OUTLIER ANALYSIS rather than
+   trying to calculate outliers from the raw
+   retrieved rows.
+
+3. For questions about the dataset, use the
+   available statistical information whenever
+   possible.
+
+4. Do not say that the context is insufficient
+   if the required answer is available in the
+   statistical analysis.
+
+5. Do not invent values or information.
+
+6. Give a clear and concise analytical answer.
+
+7. If useful, mention the relevant column names
+   and numerical values.
+
+Provide the final answer in a professional
+data-analysis style.
 """
 
-                response = ask_gemini(prompt)
+               
 
-                st.write("### Retrieved Chunks")
+                response = ask_gemini(
+                    prompt
+                )
 
-                st.text(retrieved_chunks[:1000])
+           
 
-                st.write("### AI Response")
+            st.write("### 🔎 RAG Retrieval")
 
-                st.success(response)
+            retrieved_count = len(
+                results["documents"][0]
+            )
+
+            st.success(
+                f"{retrieved_count} relevant context "
+                f"chunks retrieved from ChromaDB."
+            )
+
+            with st.expander(
+                "🔍 View Retrieved Context"
+            ):
+
+                for i, chunk in enumerate(
+                    results["documents"][0],
+                    start=1
+                ):
+
+                    st.markdown(
+                        f"**Retrieved Context {i}**"
+                    )
+
+                    st.code(
+                        chunk[:1000],
+                        language="text"
+                    )
+
+            # ===============================
+            # AI RESPONSE
+            # ===============================
+
+            st.write("### 🤖 AI Analysis")
+
+            st.caption(
+                "🧠 Response generated using "
+                "ChromaDB semantic retrieval + Gemini."
+            )
+
+            with st.container(border=True):
+
+                st.markdown(
+                    response
+                )
 st.markdown("---")
 
 st.markdown(

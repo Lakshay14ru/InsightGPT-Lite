@@ -192,8 +192,6 @@ The project includes a dedicated statistical question-answering system that dete
 
 ### Example Questions
 
-```text
-
 Which gender has the highest average final grade?
 
 What is the average age?
@@ -206,7 +204,7 @@ What is the average study time?
 
 Which gender has the lowest average grade?
 
-🧠 Retrieval-Augmented Generation (RAG)
+### 🧠 Retrieval-Augmented Generation (RAG)
 
 ✅ Dataset Chunking
 
@@ -222,7 +220,7 @@ Which gender has the lowest average grade?
 
 The RAG pipeline converts relevant dataset information into searchable embeddings and retrieves the most relevant context for natural language questions.
 
-🧹 Data Cleaning
+### 🧹 Data Cleaning
 
 The Data Cleaning section allows users to process and prepare the uploaded dataset directly through the Streamlit interface.
 
@@ -242,7 +240,7 @@ Cleaning Features
 
 The application ensures that analysis can be performed on the processed dataset after cleaning operations are completed.
 
-🔍 Exploratory Data Analysis
+### 🔍 Exploratory Data Analysis
 
 The application performs automated exploratory data analysis on numerical and categorical columns.
 
@@ -276,7 +274,7 @@ EDA Features
 
 This provides users with a detailed understanding of their dataset before asking AI-based questions.
 
-📄 Reporting
+### 📄 Reporting
 
 ✅ Professional PDF Report Generation
 
@@ -294,7 +292,7 @@ This provides users with a detailed understanding of their dataset before asking
 
 The reporting system generates a professional PDF report containing important dataset information, analytical findings, data quality information, visualizations, and AI-generated summaries.
 
-🎨 User Interface
+### 🎨 User Interface
 
 ✅ Streamlit Interactive Dashboard
 
@@ -318,7 +316,7 @@ The reporting system generates a professional PDF report containing important da
 
 ✅ Professional Report Generation Interface
 
-InsightGPT_Lite/
+### InsightGPT_Lite/
 
 │
 
@@ -378,7 +376,7 @@ InsightGPT_Lite/
 
     └── InsightGPT_Report.pdf
 
-🛠 Technology Stack
+### 🛠 Technology Stack
 
 Programming Language
 
@@ -440,9 +438,9 @@ Git
 
 GitHub
 
-⚙️ Installation
+### ⚙️ Installation
 
-Clone Repository
+### Clone Repository
 
 git clone https://github.com/Lakshay14ru/InsightGPT-Lite.git
 
@@ -450,21 +448,21 @@ Move into Project Directory
 
 cd InsightGPT_Lite
 
-Create Virtual Environment
+### Create Virtual Environment
 
 python -m venv venv
 
-Activate Virtual Environment
+### Activate Virtual Environment
 
 Windows
 
 venv\Scripts\activate
 
-Install Dependencies
+### Install Dependencies
 
 pip install -r requirements.txt
 
-Configure Gemini API
+### Configure Gemini API
 
 Create a .env file in the project directory and add your Gemini API key:
 
@@ -480,7 +478,7 @@ The application will open in your browser at:
 
 http://localhost:8501
 
-📈 Project Workflow
+### 📈 Project Workflow
 
 CSV Dataset
 
@@ -572,7 +570,7 @@ PDF Report Generation
 
 Report Download
 
-🔎 Natural Language Question Answering
+### 🔎 Natural Language Question Answering
 
 InsightGPT Lite allows users to ask natural language questions about their uploaded dataset.
 
@@ -614,7 +612,7 @@ Result:
 
 The average age in the dataset is approximately 16.74 years.
 
-📊 Statistical Analysis Example
+### 📊 Statistical Analysis Example
 
 The system can calculate group-wise statistics directly from the dataset.
 
@@ -640,7 +638,7 @@ G1 and G2 = 0.865
 
 G1 and G3 = 0.826
 
-📄 PDF Reporting
+### 📄 PDF Reporting
 
 InsightGPT Lite includes a professional PDF reporting system.
 
@@ -682,11 +680,11 @@ Analytical Results
 
 The report can be generated and downloaded directly from the Streamlit application.
 
-📸 Project Screenshots
+### 📸 Project Screenshots
 
 Screenshots can be maintained inside the screenshots/ folder.
 
-Recommended screenshots include:
+### Recommended screenshots include:
 
 Dashboard
 
@@ -714,7 +712,7 @@ PDF Report
 
 Generated Analytical Findings
 
-🎯 Project Objectives
+### 🎯 Project Objectives
 
 Simplify data analytics for non-technical users.
 
@@ -738,7 +736,7 @@ Generate professional PDF reports.
 
 Demonstrate practical integration of Data Science, Generative AI, RAG, and Streamlit.
 
-🔮 Future Scope
+### 🔮 Future Scope
 
 Although the current project is completed, the following features could be added in future versions:
 
@@ -774,11 +772,11 @@ Conversation Memory
 
 Role-Based Access Control
 
-🏆 Development Phases
+### 🏆 Development Phases
 
 The project was developed through multiple phases.
 
-Phase 1 – Project Setup
+### Phase 1 – Project Setup
 
 ✅ Project initialization
 
@@ -792,7 +790,7 @@ Phase 1 – Project Setup
 
 ✅ Initial requirements configuration
 
-Phase 2 – Core Analytics Dashboard
+### Phase 2 – Core Analytics Dashboard
 
 ✅ CSV dataset upload
 
@@ -810,7 +808,7 @@ Phase 2 – Core Analytics Dashboard
 
 ✅ Dashboard metrics
 
-Phase 3 – Data Cleaning and Visualization
+### Phase 3 – Data Cleaning and Visualization
 
 ✅ Data cleaning functionality
 
@@ -830,7 +828,7 @@ Phase 3 – Data Cleaning and Visualization
 
 ✅ Additional visualizations
 
-Phase 4 – AI and RAG Integration
+### Phase 4 – AI and RAG Integration
 
 ✅ Gemini AI integration
 
@@ -848,7 +846,7 @@ Phase 4 – AI and RAG Integration
 
 ✅ RAG-based question answering
 
-Phase 5 – Advanced Analytics and Insights
+### Phase 5 – Advanced Analytics and Insights
 
 ✅ Automated EDA
 
@@ -870,7 +868,7 @@ Phase 5 – Advanced Analytics and Insights
 
 ✅ Recommended actions
 
-Phase 6 – Intelligent Question Answering
+### Phase 6 – Intelligent Question Answering
 
 ✅ Question classification
 
@@ -890,7 +888,7 @@ Phase 6 – Intelligent Question Answering
 
 ✅ Context-aware AI responses
 
-Phase 7 – Finalization and Professional Reporting
+### Phase 7 – Finalization and Professional Reporting
 
 ✅ Final UI improvements
 
@@ -916,7 +914,7 @@ Phase 7 – Finalization and Professional Reporting
 
 ✅ Final project completion
 
-🧪 Final Testing
+### 🧪 Final Testing
 
 The application was tested using real dataset analysis and natural language questions.
 
@@ -936,7 +934,7 @@ Result
 
 The average age in the dataset is approximately 16.74 years.
 
-Additional Analysis
+### Additional Analysis
 
 The system successfully generated:
 
@@ -960,7 +958,7 @@ Dataset interpretations
 
 AI-generated analytical responses
 
-📌 Project Status
+### 📌 Project Status
 
 ✅ Completed
 
@@ -980,7 +978,7 @@ Phase 6  → ✅ Completed
 
 Phase 7  → ✅ Completed
 
-🎉 Final Status
+### 🎉 Final Status
 
 InsightGPT Lite – Project Completed Successfully
 
@@ -1012,7 +1010,7 @@ The project is finalized with:
 
 ✅ Complete Documentation
 
-👨‍💻 Developer
+### 👨‍💻 Developer
 
 Lakshay Kundariya
 
@@ -1022,7 +1020,7 @@ Apex University, Jaipur
 
 Internship Project – InsightGPT Lite
 
-⭐ Acknowledgement
+### ⭐ Acknowledgement
 
 This project was developed as an internship project to gain practical experience in:
 
@@ -1046,6 +1044,6 @@ Statistical Data Analysis
 
 Git and GitHub
 
-📜 License
+### 📜 License
 
 This project is developed for educational and internship pur

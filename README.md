@@ -14,73 +14,73 @@ The project was developed as an **internship project** and was completed through
 
 ## 📂 Dataset Management
 
-✅ CSV Dataset Upload
-✅ Dataset Preview
-✅ Dataset Information Panel
-✅ Row and Column Count
-✅ Column Data Type Detection
-✅ Numerical Column Detection
-✅ Categorical Column Detection
-✅ Missing Value Detection
-✅ Missing Value Percentage Analysis
-✅ Duplicate Record Detection
-✅ Duplicate Record Removal
-✅ Missing Value Handling
-✅ Dataset Filtering
-✅ Processed Dataset Download
+- ✅ CSV Dataset Upload
+- ✅ Dataset Preview
+- ✅ Dataset Information Panel
+- ✅ Row and Column Count
+- ✅ Column Data Type Detection
+- ✅ Numerical Column Detection
+- ✅ Categorical Column Detection
+- ✅ Missing Value Detection
+- ✅ Missing Value Percentage Analysis
+- ✅ Duplicate Record Detection
+- ✅ Duplicate Record Removal
+- ✅ Missing Value Handling
+- ✅ Dataset Filtering
+- ✅ Processed Dataset Download
 
 ---
 
 ## 📊 Data Analytics
 
-✅ Dataset Summary
-✅ Dataset Health Score
-✅ Data Quality Analysis
-✅ Missing Value Analysis
-✅ Duplicate Record Analysis
-✅ Numerical Column Analysis
-✅ Categorical Column Analysis
-✅ Automated Exploratory Data Analysis
-✅ Unique Value Analysis
-✅ Data Type Analysis
-✅ Statistical Summary
-✅ Column-Level Statistical Insights
-✅ Outlier Detection
-✅ IQR-Based Outlier Analysis
-✅ Correlation Matrix
-✅ Strong Correlation Detection
-✅ Analytical Findings Generation
+- ✅ Dataset Summary
+- ✅ Dataset Health Score
+- ✅ Data Quality Analysis
+- ✅ Missing Value Analysis
+- ✅ Duplicate Record Analysis
+- ✅ Numerical Column Analysis
+- ✅ Categorical Column Analysis
+- ✅ Automated Exploratory Data Analysis
+- ✅ Unique Value Analysis
+- ✅ Data Type Analysis
+- ✅ Statistical Summary
+- ✅ Column-Level Statistical Insights
+- ✅ Outlier Detection
+- ✅ IQR-Based Outlier Analysis
+- ✅ Correlation Matrix
+- ✅ Strong Correlation Detection
+- ✅ Analytical Findings Generation
 
 ---
 
 ## 📈 Data Visualization
 
-✅ Interactive Histograms
-✅ Scatter Plot Visualizations
-✅ Box Plot Visualizations
-✅ Bar Charts
-✅ Pie Charts
-✅ Line Charts
-✅ Correlation Heatmaps
-✅ Distribution Analysis
-✅ Interactive Plotly Visualizations
+- ✅ Interactive Histograms
+- ✅ Scatter Plot Visualizations
+- ✅ Box Plot Visualizations
+- ✅ Bar Charts
+- ✅ Pie Charts
+- ✅ Line Charts
+- ✅ Correlation Heatmaps
+- ✅ Distribution Analysis
+- ✅ Interactive Plotly Visualizations
 
 ---
 
 ## 💡 Automatic Dataset Insights
 
-✅ Automatic Dataset Overview
-✅ Automatic Data Quality Insights
-✅ Missing Data Analysis
-✅ Duplicate Analysis
-✅ Automatic Outlier Analysis
-✅ Correlation Analysis
-✅ Key Analytical Findings
-✅ Dataset Health Assessment
-✅ Health Score Calculation
-✅ Health Score Breakdown
-✅ Data Quality Recommendations
-✅ Recommended Actions
+- ✅ Automatic Dataset Overview
+- ✅ Automatic Data Quality Insights
+- ✅ Missing Data Analysis
+- ✅ Duplicate Analysis
+- ✅ Automatic Outlier Analysis
+- ✅ Correlation Analysis
+- ✅ Key Analytical Findings
+- ✅ Dataset Health Assessment
+- ✅ Health Score Calculation
+- ✅ Health Score Breakdown
+- ✅ Data Quality Recommendations
+- ✅ Recommended Actions
 
 The automatic insight system analyzes the uploaded dataset and generates structured analytical findings without requiring the user to manually perform every statistical operation.
 
@@ -88,16 +88,16 @@ The automatic insight system analyzes the uploaded dataset and generates structu
 
 ## 🤖 Artificial Intelligence
 
-✅ Google Gemini AI Integration
-✅ AI Dataset Summary
-✅ AI Cleaning Recommendations
-✅ AI Executive Summary
-✅ Natural Language Dataset Question Answering
-✅ Context-Aware AI Responses
-✅ Intelligent Question Routing
-✅ Statistical Question Detection
-✅ Dataset Context Generation
-✅ AI-Based Analytical Interpretation
+- ✅ Google Gemini AI Integration
+- ✅ AI Dataset Summary
+- ✅ AI Cleaning Recommendations
+- ✅ AI Executive Summary
+- ✅ Natural Language Dataset Question Answering
+- ✅ Context-Aware AI Responses
+- ✅ Intelligent Question Routing
+- ✅ Statistical Question Detection
+- ✅ Dataset Context Generation
+- ✅ AI-Based Analytical Interpretation
 
 The AI system is designed to answer questions using the **current uploaded dataset** and prioritize calculated statistical results whenever they are available.
 
@@ -109,167 +109,49 @@ The project includes a dedicated statistical question-answering system that dete
 
 ### Supported Statistical Analysis
 
-✅ Group-Wise Analysis
-✅ Group-Wise Average Calculation
-✅ Highest Group Average
-✅ Lowest Group Average
-✅ Survival Rate Analysis
-✅ Average / Mean Analysis
-✅ Minimum Analysis
-✅ Maximum Analysis
-✅ Count Analysis
-✅ Missing Value Percentage
-✅ Correlation Analysis
-✅ Numerical Summary
+- ✅ Group-Wise Analysis
+- ✅ Group-Wise Average Calculation
+- ✅ Highest Group Average
+- ✅ Lowest Group Average
+- ✅ Survival Rate Analysis
+- ✅ Average / Mean Analysis
+- ✅ Minimum Analysis
+- ✅ Maximum Analysis
+- ✅ Count Analysis
+- ✅ Missing Value Percentage
+- ✅ Correlation Analysis
+- ✅ Numerical Summary
 
 ### Example Questions
 
 ```text
 Which gender has the highest average final grade?
+
 What is the average age?
+
 Which group has the highest survival rate?
+
 What is the maximum age?
+
 What is the average study time?
+
 Which gender has the lowest average grade?
-```
 
----
-
-# 🔎 Retrieval-Augmented Generation (RAG)
-
-InsightGPT Lite implements a Retrieval-Augmented Generation pipeline to provide relevant dataset context to the AI system.
-
-### RAG Pipeline
-
-```text
-Uploaded Dataset
-      ↓
-Dataset Text Conversion
-      ↓
-Text Chunking
-      ↓
-Embedding Generation
-      ↓
-Sentence Transformer
-      ↓
-ChromaDB Vector Database
-      ↓
-Semantic Search
-      ↓
-Relevant Context Retrieval
-      ↓
-Gemini AI
-      ↓
-Context-Aware Answer
-```
-
-### RAG Features
-
+🧠 Retrieval-Augmented Generation (RAG)
 ✅ Dataset Chunking
 ✅ Embedding Generation
-✅ Sentence Transformer Embeddings
 ✅ ChromaDB Vector Database Integration
 ✅ Semantic Search and Retrieval
-✅ Relevant Context Retrieval
 ✅ Retrieved Context Display
 ✅ Retrieval-Augmented Question Answering
 
-The application also displays retrieved context so that users can understand which dataset information was used during the retrieval process.
+The RAG pipeline converts relevant dataset information into searchable embeddings and retrieves the most relevant context for natural language questions.
 
----
+🧹 Data Cleaning
 
-# 🧠 Intelligent Question Processing
+The Data Cleaning section allows users to process and prepare the uploaded dataset directly through the Streamlit interface.
 
-The AI question-answering system uses multiple layers of processing before generating the final response.
-
-```text
-User Question
-      ↓
-Question Classification
-      ↓
-Statistical Question Detection
-      ↓
-Group-Wise Detection
-      ↓
-Statistical Calculation
-      ↓
-Dataset Context Generation
-      ↓
-RAG Retrieval
-      ↓
-Relevant Context
-      ↓
-Gemini AI
-      ↓
-Final Analytical Response
-```
-
-This approach allows the system to handle both general dataset questions and calculation-based statistical questions.
-
-The system prioritizes calculated statistical results whenever the question requires a direct numerical answer.
-
----
-
-# 🩺 Data Quality Analysis
-
-The platform automatically evaluates the quality of the uploaded dataset.
-
-### Data Quality Checks
-
-✅ Missing Values
-✅ Missing Value Percentage
-✅ Duplicate Records
-✅ Duplicate Percentage
-✅ Numerical Columns
-✅ Categorical Columns
-✅ Outlier Detection
-✅ Overall Quality Score
-✅ Quality Status
-✅ Quality Recommendations
-
-The application provides users with a structured overview of potential data-quality problems before performing deeper analysis.
-
----
-
-# 💚 Dataset Health Score
-
-InsightGPT Lite includes a dedicated dataset health assessment system.
-
-The health assessment considers important dataset-quality factors such as:
-
-- Missing values
-- Duplicate records
-- Outliers
-
-### Health Assessment
-
-✅ Health Score
-✅ Overall Dataset Status
-✅ Health Explanation
-✅ Missing Data Impact
-✅ Duplicate Impact
-✅ Outlier Impact
-✅ Recommended Actions
-
-### Example Health Classification
-
-```text
-90–100   → Excellent Dataset
-75–89    → Good Dataset
-50–74    → Dataset Needs Cleaning
-Below 50 → Poor Dataset
-```
-
-The health score provides a quick overview of the overall condition of the uploaded dataset.
-
----
-
-# 🧹 Data Cleaning
-
-The Cleaning section allows users to process the uploaded dataset directly from the Streamlit interface.
-
-### Cleaning Features
-
+Cleaning Features
 ✅ Duplicate Removal
 ✅ Missing Value Handling
 ✅ Processed Dataset Preview
@@ -279,14 +161,11 @@ The Cleaning section allows users to process the uploaded dataset directly from 
 
 The application ensures that analysis can be performed on the processed dataset after cleaning operations are completed.
 
----
-
-# 📊 Exploratory Data Analysis
+🔍 Exploratory Data Analysis
 
 The application performs automated exploratory data analysis on numerical and categorical columns.
 
-### EDA Features
-
+EDA Features
 ✅ Dataset Summary
 ✅ Numerical Statistics
 ✅ Categorical Statistics
@@ -303,166 +182,30 @@ The application performs automated exploratory data analysis on numerical and ca
 
 This provides users with a detailed understanding of their dataset before asking AI-based questions.
 
----
+📄 Reporting
+✅ Professional PDF Report Generation
+✅ Dataset Summary Reports
+✅ Data Quality Reports
+✅ Dataset Health Reports
+✅ Automatic Insights in Reports
+✅ AI Executive Summary in Reports
+✅ Report Download Feature
 
-# 📈 Outlier Detection
+The reporting system generates a professional PDF report containing important dataset information, analytical findings, data quality information, visualizations, and AI-generated summaries.
 
-The application detects potential outliers in numerical columns using statistical analysis.
+🎨 User Interface
+✅ Streamlit Interactive Dashboard
+✅ Professional Sidebar
+✅ Tab-Based Navigation
+✅ Wide Screen Responsive Layout
+✅ Dashboard Section
+✅ Data Cleaning Section
+✅ Exploratory Data Analysis Section
+✅ Visualization Section
+✅ AI Insights Section
+✅ Statistical Analysis Section
+✅ Professional Report Generation Interface
 
-Outlier analysis is performed for relevant numerical features and the results are included in the dataset insights and report generation process.
-
-### Outlier Features
-
-✅ Numerical Column Outlier Detection
-✅ IQR-Based Analysis
-✅ Outlier Count
-✅ Column-Level Outlier Information
-✅ Outlier Insights
-✅ Outlier Impact on Dataset Health
-
----
-
-# 🔗 Correlation Analysis
-
-The application automatically calculates correlations between numerical columns.
-
-### Correlation Features
-
-✅ Correlation Matrix
-✅ Correlation Heatmap
-✅ Strong Correlation Detection
-✅ Positive Correlation Detection
-✅ Negative Correlation Detection
-✅ Correlation-Based Insights
-
-Example strong correlations can be identified between variables such as:
-
-- G1 and G2
-- G2 and G3
-- G1 and G3
-
-The system can also answer natural language questions related to correlations.
-
----
-
-# 📄 PDF Reporting
-
-InsightGPT Lite includes a professional PDF report generation system.
-
-### PDF Report Features
-
-✅ Dataset Information
-✅ Dataset Summary
-✅ Data Quality Analysis
-✅ Dataset Health Score
-✅ Health Assessment
-✅ Automatic Dataset Insights
-✅ Outlier Analysis
-✅ Correlation Information
-✅ Recommended Actions
-✅ AI Executive Summary
-✅ Professional PDF Formatting
-✅ Report Download
-
-The final report provides a consolidated summary of the dataset analysis and AI-generated insights.
-
----
-
-# 🤖 AI Executive Summary
-
-The application can generate an AI-powered executive summary based on the analyzed dataset.
-
-The executive summary can include:
-
-- Dataset overview
-- Important statistical findings
-- Data-quality observations
-- Outlier information
-- Correlation observations
-- Key analytical insights
-- Recommendations
-
-This makes the analytical results easier to understand for users who may not have a strong technical background.
-
----
-
-# 🎨 User Interface
-
-The application is built using Streamlit and follows a tab-based dashboard structure.
-
-### Main Sections
-
-```text
-📊 Dashboard
-      ↓
-🧹 Cleaning
-      ↓
-📈 Visualizations
-      ↓
-🤖 AI Insights
-```
-
-### Dashboard
-
-The Dashboard section contains:
-
-✅ Dataset Overview
-✅ Dataset Preview
-✅ RAG Statistics
-✅ Dataset Summary
-✅ Data Quality
-✅ Dataset Health Score
-✅ Automated EDA
-✅ Outlier Analysis
-✅ Correlation Analysis
-✅ Automatic Insights
-✅ Dataset Filters
-
-### Cleaning
-
-The Cleaning section contains:
-
-✅ Duplicate Removal
-✅ Missing Value Handling
-✅ Processed Dataset Preview
-✅ Dataset Download
-✅ PDF Report Generation
-
-### Visualizations
-
-The Visualization section contains:
-
-✅ Histogram
-✅ Scatter Plot
-✅ Box Plot
-✅ Bar Chart
-✅ Pie Chart
-✅ Line Chart
-✅ Correlation Heatmap
-✅ Statistical Summary
-✅ Column Insights
-✅ Distribution Analysis
-✅ Strong Correlations
-✅ Key Findings
-
-### AI Insights
-
-The AI Insights section contains:
-
-✅ AI Cleaning Recommendations
-✅ AI Dataset Summary
-✅ Natural Language Questions
-✅ Statistical Question Analysis
-✅ RAG Retrieval
-✅ Retrieved Context
-✅ Gemini AI Analysis
-✅ Context-Aware Responses
-
----
-
-# 📂 Project Structure
-
-```text
 InsightGPT_Lite/
 │
 ├── app.py
@@ -472,571 +215,419 @@ InsightGPT_Lite/
 │
 ├── utils/
 │   ├── __init__.py
-│   │
 │   ├── preprocessing.py
 │   ├── visualization.py
 │   ├── filtering.py
-│   │
 │   ├── ai_engine.py
 │   ├── ai_context.py
 │   ├── ai_analytics.py
 │   ├── ai_cleaning.py
-│   │
 │   ├── analytics.py
 │   ├── advanced_analytics.py
 │   ├── automatic_insights.py
 │   ├── data_quality.py
-│   │
 │   ├── question_classifier.py
 │   ├── statistical_question.py
 │   ├── statistical_analysis.py
-│   │
 │   ├── rag_pipeline.py
 │   ├── embedding_model.py
 │   ├── chroma_db.py
-│   │
 │   └── report_generator.py
 │
-└── venv/
-```
-
-The `venv/` directory should normally be excluded from GitHub using `.gitignore`.
-
----
-
-# 🛠 Technology Stack
-
-### Programming Language
-- Python
-
-### Frontend / Application Framework
-- Streamlit
-
-### Data Processing
-- Pandas
-- NumPy
-
-### Data Visualization
-- Plotly
-- Matplotlib
-
-### Machine Learning
-- Scikit-learn
-
-### Artificial Intelligence
-- Google Gemini API
-
-### Embedding Models
-- Sentence Transformers
-
-### Vector Database
-- ChromaDB
-
-### Retrieval-Augmented Generation
-- RAG Pipeline
-- Semantic Search
-- Vector Embeddings
-- ChromaDB Retrieval
-
-### PDF Reporting
-- ReportLab
-
-### Version Control
-- Git
-- GitHub
-
----
-
-# ⚙️ Installation
-
-### 1. Clone Repository
-
-```bash
-git clone https://github.com/Lakshay14ru/InsightGPT-Lite.git
-```
-
-### 2. Move Into Project Directory
-
-```bash
-cd InsightGPT_Lite
-```
-
-### 3. Create Virtual Environment
-
-```bash
-python -m venv venv
-```
-
-### 4. Activate Virtual Environment
-
-**Windows**
-
-```bash
-venv\Scripts\activate
-```
-
-**macOS / Linux**
-
-```bash
-source venv/bin/activate
-```
-
-### 5. Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 6. Configure Gemini API Key
-
-Create a `.env` file in the project root and add your Gemini API key according to the configuration used by the application.
-
-Example:
-
-```text
-GEMINI_API_KEY=your_api_key_here
-```
-
-Never upload your actual API key or `.env` file to GitHub.
-
-### 7. Run Application
-
-```bash
-streamlit run app.py
-```
-
-The application will open in the browser.
-
----
-
-# 📈 Complete Project Workflow
-
-```text
-                         CSV DATASET
-                              ↓
-                        CSV UPLOAD
-                              ↓
-                     DATASET PREVIEW
-                              ↓
-                       DATA CLEANING
-                       ↓           ↓
-              Duplicate Removal   Missing Values
-                       ↓           ↓
-                       └─────┬─────┘
-                             ↓
-                     DATASET FILTERING
-                             ↓
-                    DATA QUALITY ANALYSIS
-                             ↓
-                     DATASET HEALTH SCORE
-                             ↓
-                 EXPLORATORY DATA ANALYSIS
-                             ↓
-              ┌──────────────┼──────────────┐
-              ↓              ↓              ↓
-          Statistics      Outliers      Correlations
-              ↓              ↓              ↓
-              └──────────────┼──────────────┘
-                             ↓
-                    AUTOMATIC INSIGHTS
-                             ↓
-                      VISUALIZATIONS
-                             ↓
-                       AI INSIGHTS
-                             ↓
-                   QUESTION CLASSIFICATION
-                             ↓
-                  STATISTICAL QUESTION?
-                       ↓           ↓
-                     YES            NO
-                       ↓           ↓
-               Statistical       RAG Retrieval
-                 Analysis             ↓
-                       ↓          Dataset Context
-                       └────┬────────┘
-                            ↓
-                        Gemini AI
-                            ↓
-                 Context-Aware Response
-                            ↓
-                   AI Executive Summary
-                            ↓
-                     PDF REPORT
-                            ↓
-                    DOWNLOAD REPORT
-```
-
----
-
-# 📸 Project Screenshots
-
-Screenshots can be stored inside the `screenshots/` folder.
-
-Recommended screenshots:
-
-1. Dashboard
-2. Dataset Preview
-3. Dataset Information
-4. Data Quality Analysis
-5. Dataset Health Score
-6. Automatic Dataset Insights
-7. Dataset Filters
-8. Data Cleaning
-9. Statistical Summary
-10. Correlation Analysis
-11. Correlation Heatmap
-12. Visualizations
-13. AI Cleaning Recommendations
-14. AI Dataset Summary
-15. Ask AI About Your Dataset
-16. Statistical Question Answer
-17. RAG Retrieval
-18. Retrieved Context
-19. AI Executive Summary
-20. Generated PDF Report
-
----
-
-# 🧪 Example Dataset Questions
-
-The final application was tested with multiple types of natural language questions.
-
-### Statistical Questions
-
-```text
-Which gender has the highest average final grade?
-What is the average age?
-What is the percentage of missing values?
-What is the maximum age?
-What is the average study time?
-Which gender has the lowest average grade?
-```
-
-### Analytical Questions
-
-```text
-What are the strongest correlations?
-Which columns contain outliers?
-What is the overall dataset health?
-What are the main problems in this dataset?
-Give me a summary of this dataset.
-```
-
-### AI-Based Questions
-
-```text
-What are the key findings from this dataset?
-What recommendations would you give for cleaning this dataset?
-Give me an executive summary.
-Explain the important patterns in this dataset.
-```
-
----
-
-# 📸 Final Analysis Example
-
-For the Student Performance dataset, the application was able to generate analytical findings such as:
-
-- Female students have the highest average final grade.
-- The average age in the dataset is approximately 16.74 years.
-- The dataset contains 0% missing values.
-- Strong positive correlations are observed between G1, G2, and G3.
-- Outliers are detected in multiple numerical columns.
-
-The exact results depend on the dataset uploaded by the user.
-
----
-
-# 🎯 Project Objectives
-
-The main objectives of InsightGPT Lite are:
-
-- Simplify data analytics for non-technical users.
-- Allow users to upload and analyze CSV datasets.
-- Provide automated data quality assessment.
-- Perform exploratory data analysis automatically.
-- Provide interactive data visualizations.
-- Detect outliers and strong correlations.
-- Generate automatic analytical insights.
-- Implement statistical question answering.
-- Integrate Generative AI into data analytics.
-- Implement Retrieval-Augmented Generation for contextual responses.
-- Integrate ChromaDB for semantic retrieval.
-- Generate professional PDF analytics reports.
-- Demonstrate practical integration of Data Science, AI, RAG, and Generative AI technologies.
-
----
-
-# 🔐 Security and API Key Safety
-
-The project uses the Gemini API for AI-powered functionality.
-
-API keys should always be stored locally using environment variables.
-
-The `.env` file should not be committed to GitHub.
-
-Recommended `.gitignore` entries:
-
-```text
-.env
-venv/
-__pycache__/
-*.pyc
-```
-
-Never expose a real API key in:
-
-- Source code
-- GitHub repositories
-- Screenshots
-- README files
-- Public documentation
-
----
-
-# 🔮 Future Scope
-
-The current planned project has been completed. Future versions could include:
-
-- Multi-file Dataset Upload
-- Excel File Support
-- PDF Data Support
-- JSON Dataset Support
-- Automated EDA Reports
-- Predictive Analytics
-- Machine Learning Model Integration
-- Time-Series Forecasting
-- Advanced Statistical Testing
-- User Authentication
-- Role-Based Access
-- Cloud Database Integration
-- Cloud Deployment
-- Dashboard Export Features
-- Automated Report Scheduling
-- Advanced RAG Strategies
-- Multi-Model AI Support
-
-These features are considered future enhancements and are not part of the current completed version.
-
----
-
-# 📚 Development Phases
-
-The project was developed incrementally through multiple development phases.
-
-### Phase 1 – Project Planning and Setup
-
-✅ Project Planning
-✅ Initial Project Structure
-✅ Python Environment Setup
-✅ Streamlit Application Setup
-✅ Git and GitHub Repository Setup
-✅ Initial Dependencies Configuration
-
-### Phase 2 – Core Analytics Dashboard
-
-✅ CSV Upload
-✅ Dataset Preview
-✅ Dataset Information
-✅ Row and Column Statistics
-✅ Missing Value Detection
-✅ Duplicate Detection
-✅ Basic Data Analysis
-✅ Dashboard Metrics
-
-### Phase 3 – Data Cleaning and Visualization
-
-✅ Duplicate Removal
-✅ Missing Value Handling
-✅ Dataset Filtering
-✅ Histogram Visualization
-✅ Scatter Plot Visualization
-✅ Box Plot Visualization
-✅ Bar Chart Visualization
-✅ Pie Chart Visualization
-✅ Line Chart Visualization
-✅ Processed Dataset Download
-
-### Phase 4 – AI and RAG Integration
-
-✅ Gemini AI Integration
-✅ AI Dataset Analysis
-✅ Dataset Context Generation
-✅ Text Chunking
-✅ Embedding Generation
-✅ Sentence Transformer Integration
-✅ ChromaDB Integration
-✅ Semantic Retrieval
-✅ Retrieved Context Display
-✅ RAG-Based Question Answering
-
-### Phase 5 – Advanced Analytics and Automatic Insights
-
-✅ Advanced EDA
-✅ Statistical Summaries
-✅ Column-Level Numerical Insights
-✅ Outlier Detection
-✅ Correlation Analysis
-✅ Strong Correlation Detection
-✅ Automatic Dataset Insights
-✅ Data Quality Insights
-✅ Dataset Health Score
-✅ Recommended Actions
-✅ Analytical Findings
-
-### Phase 6 – Intelligent Statistical Question Answering
-
-✅ Question Classification
-✅ Statistical Question Detection
-✅ Group-Wise Question Detection
-✅ Group-Wise Average Analysis
-✅ Highest Group Average Detection
-✅ Lowest Group Average Detection
-✅ Survival Question Detection
-✅ Survival Rate Calculation
-✅ Average and Mean Analysis
-✅ Minimum and Maximum Analysis
-✅ Missing Value Percentage Analysis
-✅ Statistical Results Integrated with Gemini
-✅ Dataset-Aware AI Responses
-
-### Phase 7 – Final Integration, Reporting and Project Completion
-
-✅ Complete Dashboard Integration
-✅ Complete Cleaning Workflow
-✅ Complete Visualization Workflow
-✅ Complete AI Insights Workflow
-✅ Advanced Statistical Analysis Integration
-✅ RAG Retrieval Integration
-✅ Intelligent Question Routing
-✅ Dataset Health Assessment
-✅ Automatic Analytical Insights
-✅ AI Executive Summary
-✅ AI Cleaning Recommendations
-✅ Professional PDF Report Generation
-✅ PDF Report Download
-✅ Processed Dataset Download
-✅ Final Dataset Question Testing
-✅ Final Statistical Question Testing
-✅ Final AI Response Testing
-✅ Final RAG Retrieval Testing
-✅ Final PDF Report Testing
-✅ Final Project Verification
-✅ README Documentation Completed
-✅ GitHub Repository Preparation Completed
-
----
-
-# 🏆 Final Project Status
-
-## ✅ PROJECT OFFICIALLY COMPLETED
-
-InsightGPT Lite has successfully completed all planned development phases.
-
-The final application provides an integrated platform for:
-
-```text
-CSV Upload
-     ↓
-Data Cleaning
-     ↓
-Data Quality Analysis
-     ↓
-Dataset Health Assessment
-     ↓
+└── reports/
+    └── InsightGPT_Report.pdf
+
+🛠 Technology Stack
+Programming Language
+Python
+Frontend Framework
+Streamlit
+Data Processing
+Pandas
+NumPy
+Data Visualization
+Plotly
+Matplotlib
 Exploratory Data Analysis
-     ↓
+Pandas
+NumPy
+Scikit-learn
 Statistical Analysis
-     ↓
-Interactive Visualization
-     ↓
+Artificial Intelligence
+Google Gemini API
+Generative AI
+Embedding Models
+Sentence Transformers
+Vector Database
+ChromaDB
+Retrieval-Augmented Generation
+RAG Pipeline
+Semantic Search
+Vector Embeddings
+Context Retrieval
+Version Control
+Git
+GitHub
+⚙️ Installation
+Clone Repository
+git clone https://github.com/Lakshay14ru/InsightGPT-Lite.git
+Move into Project Directory
+cd InsightGPT_Lite
+Create Virtual Environment
+python -m venv venv
+Activate Virtual Environment
+Windows
+venv\Scripts\activate
+Install Dependencies
+pip install -r requirements.txt
+Configure Gemini API
+
+Create a .env file in the project directory and add your Gemini API key:
+
+GEMINI_API_KEY=your_api_key_here
+
+Never upload your .env file or API keys to GitHub.
+
+Run Application
+streamlit run app.py
+
+The application will open in your browser at:
+
+http://localhost:8501
+📈 Project Workflow
+CSV Dataset
+      ↓
+Dataset Upload
+      ↓
+Dataset Preview
+      ↓
+Data Cleaning
+      ↓
+Missing Value Handling
+      ↓
+Duplicate Removal
+      ↓
+Dataset Filtering
+      ↓
+Data Quality Analysis
+      ↓
+Exploratory Data Analysis
+      ↓
+Statistical Analysis
+      ↓
+Visualizations
+      ↓
+Automatic Dataset Insights
+      ↓
+Question Classification
+      ↓
+Statistical Question Analysis
+      ↓
+Dataset Chunking
+      ↓
+Embedding Generation
+      ↓
+ChromaDB Vector Database
+      ↓
+Semantic Retrieval
+      ↓
+Relevant Dataset Context
+      ↓
+Gemini AI
+      ↓
+Context-Aware Responses
+      ↓
+PDF Report Generation
+      ↓
+Report Download
+🔎 Natural Language Question Answering
+
+InsightGPT Lite allows users to ask natural language questions about their uploaded dataset.
+
+Example Questions
+Which gender has the highest average final grade?
+
+What is the average age?
+
+What is the percentage of missing values?
+
+Which columns have strong correlations?
+
+Which columns contain outliers?
+
+What is the maximum age?
+
+What is the average study time?
+
+The system identifies the type of question and performs the required statistical calculation using the uploaded dataset.
+
+For example:
+
+Question:
+Which gender has the highest average final grade?
+
+Result:
+Female students have the highest average final grade.
+
+Another example:
+
+Question:
+What is the average age?
+
+Result:
+The average age in the dataset is approximately 16.74 years.
+📊 Statistical Analysis Example
+
+The system can calculate group-wise statistics directly from the dataset.
+
+For example, for student performance data:
+
+Female Average G3 = 12.253
+Male Average G3   = 11.406
+
+The system identifies:
+
+Female students have the highest average final grade.
+
+The system can also calculate:
+
+Average Age = 16.744
+
+and detect correlations such as:
+
+G2 and G3 = 0.919
+G1 and G2 = 0.865
+G1 and G3 = 0.826
+📄 PDF Reporting
+
+InsightGPT Lite includes a professional PDF reporting system.
+
+The generated report can contain:
+
+Dataset Overview
+Dataset Dimensions
+Data Types
+Missing Value Analysis
+Duplicate Analysis
+Dataset Health Score
+Statistical Summary
+Numerical Analysis
+Categorical Analysis
+Outlier Analysis
+Correlation Analysis
 Automatic Insights
-     ↓
-Statistical Question Answering
-     ↓
-RAG Retrieval
-     ↓
-Gemini AI Analysis
-     ↓
+Key Findings
+Recommended Actions
 AI Executive Summary
-     ↓
-Professional PDF Report
-```
+Data Cleaning Information
+Analytical Results
 
-The final version has been tested with:
+The report can be generated and downloaded directly from the Streamlit application.
 
-✅ Dataset Upload
-✅ Dataset Preview
+📸 Project Screenshots
+
+Screenshots can be maintained inside the screenshots/ folder.
+
+Recommended screenshots include:
+
+Dashboard
+Dataset Upload
+Dataset Information
+Data Cleaning
+Dataset Filtering
+Exploratory Data Analysis
+Data Visualizations
+Automatic Dataset Insights
+AI Insights
+Statistical Question Answering
+Retrieved RAG Context
+PDF Report
+Generated Analytical Findings
+🎯 Project Objectives
+Simplify data analytics for non-technical users.
+Provide AI-driven insights from structured datasets.
+Automate exploratory data analysis.
+Provide data quality assessment.
+Detect missing values, duplicates, outliers, and correlations.
+Implement statistical question answering.
+Implement Retrieval-Augmented Generation for contextual question answering.
+Integrate Google Gemini AI with dataset analysis.
+Generate automatic analytical insights.
+Generate professional PDF reports.
+Demonstrate practical integration of Data Science, Generative AI, RAG, and Streamlit.
+🔮 Future Scope
+
+Although the current project is completed, the following features could be added in future versions:
+
+Multi-file Dataset Upload
+Excel File Support
+PDF Dataset Support
+Automated Advanced EDA Reports
+Predictive Analytics
+Machine Learning Model Integration
+Automated Machine Learning
+Time-Series Forecasting
+User Authentication
+Cloud Database Integration
+Cloud Deployment
+Dashboard Export Features
+Advanced RAG Pipelines
+Multiple LLM Support
+Conversation Memory
+Role-Based Access Control
+🏆 Development Phases
+
+The project was developed through multiple phases.
+
+Phase 1 – Project Setup
+✅ Project initialization
+✅ Streamlit application setup
+✅ Virtual environment setup
+✅ Project folder structure
+✅ Git and GitHub repository setup
+✅ Initial requirements configuration
+Phase 2 – Core Analytics Dashboard
+✅ CSV dataset upload
+✅ Dataset preview
+✅ Dataset information
+✅ Data type detection
+✅ Missing value detection
+✅ Duplicate detection
+✅ Basic dataset analytics
+✅ Dashboard metrics
+Phase 3 – Data Cleaning and Visualization
+✅ Data cleaning functionality
+✅ Missing value handling
+✅ Duplicate removal
+✅ Dataset filtering
+✅ Processed dataset preview
+✅ Processed dataset download
+✅ Histograms
+✅ Scatter plots
+✅ Additional visualizations
+Phase 4 – AI and RAG Integration
+✅ Gemini AI integration
+✅ Dataset context generation
+✅ Dataset chunking
+✅ Embedding generation
+✅ Sentence Transformer integration
+✅ ChromaDB integration
+✅ Semantic retrieval
+✅ RAG-based question answering
+Phase 5 – Advanced Analytics and Insights
+✅ Automated EDA
+✅ Statistical analysis
+✅ Numerical analysis
+✅ Categorical analysis
+✅ Outlier detection
+✅ Correlation analysis
+✅ Data quality analysis
+✅ Dataset health score
+✅ Automatic dataset insights
+✅ Recommended actions
+Phase 6 – Intelligent Question Answering
+✅ Question classification
+✅ Statistical question detection
+✅ Group-wise analysis
+✅ Group-wise average calculations
+✅ Minimum and maximum analysis
+✅ Missing value percentage analysis
+✅ Correlation-based questions
+✅ Dataset-specific analytical answers
+✅ Context-aware AI responses
+Phase 7 – Finalization and Professional Reporting
+✅ Final UI improvements
+✅ Final analytics validation
+✅ Final AI question-answering validation
+✅ Statistical question validation
+✅ Automatic insights validation
+✅ Dataset health validation
+✅ Professional PDF report generation
+✅ PDF report validation
+✅ Final README documentation
+✅ Final project testing
+✅ Final GitHub repository preparation
+✅ Final project completion
+🧪 Final Testing
+
+The application was tested using real dataset analysis and natural language questions.
+
+Tested Question 1
+Which gender has the highest average final grade?
+Result
+Female students have the highest average final grade.
+Tested Question 2
+What is the average age?
+Result
+The average age in the dataset is approximately 16.74 years.
+Additional Analysis
+
+The system successfully generated:
+
+Average values
+Minimum values
+Maximum values
+Group-wise averages
+Missing value percentages
+Correlation results
+Outlier detection
+Automatic key findings
+Dataset interpretations
+AI-generated analytical responses
+📌 Project Status
+✅ Completed
+
+All planned development phases have been completed successfully.
+
+Phase 1  → ✅ Completed
+Phase 2  → ✅ Completed
+Phase 3  → ✅ Completed
+Phase 4  → ✅ Completed
+Phase 5  → ✅ Completed
+Phase 6  → ✅ Completed
+Phase 7  → ✅ Completed
+🎉 Final Status
+
+InsightGPT Lite – Project Completed Successfully
+
+The project is finalized with:
+
+✅ Data Analytics
 ✅ Data Cleaning
-✅ Missing Value Analysis
-✅ Duplicate Analysis
-✅ Dataset Filtering
 ✅ Exploratory Data Analysis
 ✅ Statistical Analysis
-✅ Outlier Detection
-✅ Correlation Analysis
+✅ Data Quality Assessment
 ✅ Automatic Insights
-✅ Dataset Health Score
-✅ Visualizations
-✅ Statistical Questions
-✅ Group-Wise Analysis
-✅ Natural Language Questions
-✅ RAG Retrieval
-✅ Gemini AI Responses
-✅ AI Executive Summary
-✅ PDF Report Generation
-✅ PDF Report Download
+✅ AI Integration
+✅ RAG Pipeline
+✅ ChromaDB Integration
+✅ Natural Language Question Answering
+✅ Professional PDF Reporting
+✅ Final Testing
+✅ Complete Documentation
+👨‍💻 Developer
 
----
+Lakshay Kundariya
 
-# ⭐ Current Project Status
-
-✅ Phase 1 – Project Setup Completed
-✅ Phase 2 – Core Analytics Dashboard Completed
-✅ Phase 3 – Data Cleaning and Visualization Completed
-✅ Phase 4 – AI and RAG Integration Completed
-✅ Phase 5 – Advanced Analytics and Automatic Insights Completed
-✅ Phase 6 – Intelligent Statistical Question Answering Completed
-✅ Phase 7 – Final Integration, Reporting and Testing Completed
-
-🎉 **Project Development Officially Completed**
-
-**InsightGPT Lite – AI-Powered Data Analytics and RAG Platform**
-
----
-
-# 👨‍💻 Developer
-
-**Lakshay Kundariya**
 BCA (Data Science)
 Apex University, Jaipur
+
 Internship Project – InsightGPT Lite
 
----
+⭐ Acknowledgement
 
-# 📚 Skills Demonstrated
+This project was developed as an internship project to gain practical experience in:
 
-Through this project, the following technical skills were applied:
+Data Science
+Data Analytics
+Machine Learning
+Generative AI
+Retrieval-Augmented Generation
+Vector Databases
+Natural Language Processing
+Streamlit Application Development
+Statistical Data Analysis
+Git and GitHub
+📜 License
 
-- Python
-- Data Science
-- Data Analytics
-- Exploratory Data Analysis
-- Statistical Analysis
-- Machine Learning
-- Generative AI
-- Google Gemini API
-- Retrieval-Augmented Generation
-- Semantic Search
-- Embeddings
-- ChromaDB
-- Sentence Transformers
-- Pandas
-- NumPy
-- Plotly
-- Matplotlib
-- Scikit-learn
-- Streamlit
-- PDF Report Generation
-- Git
-- GitHub
+This project is developed for educational and internship purposes.

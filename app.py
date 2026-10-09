@@ -256,209 +256,156 @@ def _sanitize_ai_executive_summary(
 # GROUP-WISE QUESTION FALLBACK
 # ============================================================
 
+
 def _detect_groupwise_question_fallback(
     question,
     dataframe
 ):
+    """
+    Detect group-wise questions using the actual
+    columns present in the uploaded dataset.
+    """
+
+    import re
+
+    if dataframe is None or dataframe.empty:
+        return {
+            "is_groupwise": False,
+            "group_column": None,
+            "value_column": None
+        }
 
     q = str(question).lower().strip()
+    q = q.replace("_", " ")
 
-    categorical_columns = (
-        dataframe
-        .select_dtypes(
-            include=[
-                "object",
-                "category"
-            ]
-        )
-        .columns
-        .tolist()
-    )
+    # Find categorical and numerical columns dynamically.
+    categorical_columns = dataframe.select_dtypes(
+        include=["object", "category", "bool"]
+    ).columns.tolist()
 
-    numerical_columns = (
-        dataframe
-        .select_dtypes(
-            include=["number"]
-        )
-        .columns
-        .tolist()
-    )
+    numerical_columns = dataframe.select_dtypes(
+        include="number"
+    ).columns.tolist()
 
     group_column = None
     value_column = None
 
-    # ========================================================
-    # GROUP COLUMN
-    # ========================================================
+    # Normalize column names for matching.
+    def normalize(name):
+        return re.sub(
+            r"[^a-z0-9]+",
+            " ",
+            str(name).lower()
+        ).strip()
 
-    if (
-        "gender" in q
-        or "male" in q
-        or "female" in q
-        or "sex" in q
-    ):
+    normalized_question = normalize(q)
 
-        for column in dataframe.columns:
+    # ------------------------------------------------
+    # 1. Detect the grouping column
+    # ------------------------------------------------
 
-            if column.lower() == "sex":
+    group_candidates = []
 
-                group_column = column
-                break
-
-    if group_column is None:
-
-        for column in categorical_columns:
-
-            normalized_column = (
-                column
-                .lower()
-                .replace("_", " ")
-            )
-
-            if normalized_column in q:
-
-                group_column = column
-                break
-
-    if group_column is None:
+    for column in categorical_columns:
+        normalized_column = normalize(column)
 
         if (
-            "school" in q
-            and "school" in dataframe.columns
+            normalized_column
+            and normalized_column in normalized_question
         ):
+            group_candidates.append(column)
 
-            group_column = "school"
+    # Handle common synonyms only when the column exists.
+    aliases = {
+        "gender": ["sex", "gender"],
+        "sex": ["sex", "gender"],
+        "class": ["class", "pclass"],
+        "city": ["city", "location"],
+        "country": ["country"],
+        "department": ["department", "dept"]
+    }
 
-    if group_column is None:
+    if not group_candidates:
+        for keyword, possible_names in aliases.items():
+            if keyword in normalized_question:
+                for column in categorical_columns:
+                    if normalize(column) in possible_names:
+                        group_candidates.append(column)
 
-        if (
-            "address" in q
-            and "address" in dataframe.columns
-        ):
-
-            group_column = "address"
-
-    if group_column is None:
-
-        if (
-            "parent job" in q
-            and "Mjob" in dataframe.columns
-        ):
-
-            group_column = "Mjob"
-
-    # ========================================================
-    # VALUE COLUMN
-    # ========================================================
-
-    if (
-        "final grade" in q
-        or "final grades" in q
-        or "final score" in q
-        or "final scores" in q
-        or "g3" in q
-    ):
-
-        for column in dataframe.columns:
-
-            if column.lower() == "g3":
-
-                value_column = column
-                break
-
-    if value_column is None:
-
-        if (
-            "grade" in q
-            and "G3" in dataframe.columns
-        ):
-
-            value_column = "G3"
-
-    if value_column is None:
-
-        if "age" in q:
-
-            for column in dataframe.columns:
-
-                if column.lower() == "age":
-
-                    value_column = column
+                if group_candidates:
                     break
 
-    if value_column is None:
+    if len(group_candidates) == 1:
+        group_column = group_candidates[0]
+
+    # ------------------------------------------------
+    # 2. Detect the numerical column to analyze
+    # ------------------------------------------------
+
+    value_candidates = []
+
+    for column in numerical_columns:
+        normalized_column = normalize(column)
 
         if (
-            "study time" in q
-            and "studytime" in dataframe.columns
+            normalized_column
+            and normalized_column in normalized_question
         ):
+            value_candidates.append(column)
 
-            value_column = "studytime"
+    # Support common terms without assuming fixed columns.
+    value_aliases = {
+        "age": ["age"],
+        "fare": ["fare", "ticket price", "price"],
+        "grade": ["grade", "score", "marks"],
+        "salary": ["salary", "income", "wage"]
+    }
 
-    if value_column is None:
+    if not value_candidates:
+        for keyword, terms in value_aliases.items():
+            if keyword in normalized_question:
+                for column in numerical_columns:
+                    if normalize(column) in terms:
+                        value_candidates.append(column)
 
-        if (
-            "absence" in q
-            and "absences" in dataframe.columns
-        ):
+                if value_candidates:
+                    break
 
-            value_column = "absences"
+    if len(value_candidates) == 1:
+        value_column = value_candidates[0]
 
-    if value_column is None:
+    # ------------------------------------------------
+    # 3. Decide whether this is a group-wise question
+    # ------------------------------------------------
 
-        for column in numerical_columns:
-
-            if column.lower() in q:
-
-                value_column = column
-                break
-
-    # ========================================================
-    # GROUP-WISE DETECTION
-    # ========================================================
-
-    group_words = [
-
+    groupwise_keywords = [
         "by",
         "among",
         "between",
-        "which gender",
-        "which group",
-        "which category",
-        "highest",
-        "lowest",
+        "each",
+        "per",
+        "compare",
+        "highest average",
+        "lowest average",
         "average for",
         "average by",
         "mean by",
         "group"
-
     ]
 
     is_groupwise = (
-
         group_column is not None
-
-        and
-
-        value_column is not None
-
-        and
-
-        any(
-            word in q
-            for word in group_words
+        and value_column is not None
+        and any(
+            word in normalized_question
+            for word in groupwise_keywords
         )
-
     )
 
     return {
-
         "is_groupwise": is_groupwise,
-
         "group_column": group_column,
-
         "value_column": value_column
-
     }
 
 

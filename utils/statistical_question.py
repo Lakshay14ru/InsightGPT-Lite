@@ -2,105 +2,131 @@ import re
 
 
 def detect_groupwise_question(question, df):
-    """
-    Detect whether a question is asking for
-    group-wise statistical analysis.
-    """
+    """Detect group-wise questions using the uploaded dataset's columns."""
+    import re
 
-    question = question.lower().strip()
-
-    group_column = None
-    value_column = None
-
-    # ============================================
-    # GROUP COLUMN DETECTION
-    # ============================================
-
-    group_mapping = {
-    "class": "Pclass",
-    "pclass": "Pclass",
-    "passenger class": "Pclass",
-
-    "gender": "Sex",
-    "sex": "Sex",
-
-    "embarked": "Embarked",
-    "port": "Embarked",
-
-    "survival": "Survived"
-}
-
-    for keyword, column in group_mapping.items():
-
-        if (
-            keyword in question
-            and column in df.columns
-        ):
-            group_column = column
-            break
-
-    # ============================================
-    # VALUE COLUMN DETECTION
-    # ============================================
-
-    value_mapping = {
-        "fare": "Fare",
-        "age": "Age",
-        "survival": "Survived",
-        "siblings": "SibSp",
-        "sibsp": "SibSp",
-        "parents": "Parch",
-        "children": "Parch",
-        "parch": "Parch"
-    }
-
-    for keyword, column in value_mapping.items():
-
-        if (
-            keyword in question
-            and column in df.columns
-        ):
-            value_column = column
-            break
-
-    # ============================================
-    # CHECK FOR GROUPWISE INTENT
-    # ============================================
-
-    groupwise_keywords = [
-        "by",
-        "each",
-        "per",
-        "for each",
-        "highest average",
-        "lowest average",
-        "average for",
-        "average by",
-        "mean by",
-        "compare"
-    ]
-
-    is_groupwise = any(
-        keyword in question
-        for keyword in groupwise_keywords
-    )
-
-    if (
-        is_groupwise
-        and group_column
-        and value_column
-    ):
-
+    if df is None or df.empty:
         return {
-            "is_groupwise": True,
-            "group_column": group_column,
-            "value_column": value_column
+            "is_groupwise": False,
+            "group_column": None,
+            "value_column": None
         }
 
+    def normalize(value):
+        return re.sub(
+            r"[^a-z0-9]+",
+            " ",
+            str(value).lower()
+        ).strip()
+
+    q = normalize(question)
+
+    categorical_columns = df.select_dtypes(
+        include=["object", "category", "bool"]
+    ).columns.tolist()
+
+    numerical_columns = df.select_dtypes(
+        include="number"
+    ).columns.tolist()
+
+    # Detect the grouping column from the actual dataset.
+    group_candidates = []
+
+    for column in categorical_columns:
+        name = normalize(column)
+
+        if name and re.search(
+            r"\b" + re.escape(name) + r"\b", q
+        ):
+            group_candidates.append(column)
+
+    # Common alternatives, matched to columns that actually exist.
+    aliases = {
+        "gender": ["sex", "gender"],
+        "sex": ["sex", "gender"],
+        "school": ["school"],
+        "class": ["class", "pclass"],
+        "department": ["department", "dept"]
+    }
+
+    if not group_candidates:
+        for keyword, possible_names in aliases.items():
+            if re.search(r"\b" + keyword + r"\b", q):
+                for column in categorical_columns:
+                    if normalize(column) in possible_names:
+                        group_candidates.append(column)
+
+                if group_candidates:
+                    break
+
+    group_column = (
+        group_candidates[0]
+        if len(group_candidates) == 1
+        else None
+    )
+
+    # Detect the numerical column explicitly mentioned in the question.
+    value_candidates = []
+
+    for column in numerical_columns:
+        name = normalize(column)
+
+        if name and re.search(
+            r"\b" + re.escape(name) + r"\b", q
+        ):
+            value_candidates.append(column)
+
+    # Grade-related wording refers to G3 when that column exists.
+    if not value_candidates and any(
+        term in q.split()
+        for term in ["grade", "grades", "score", "scores", "marks"]
+    ):
+        for column in numerical_columns:
+            if normalize(column) == "g3":
+                value_candidates.append(column)
+                break
+
+    # Resolve common numerical-column aliases.
+    if not value_candidates:
+        value_aliases = {
+            "age": ["age"],
+            "salary": ["salary", "income", "wage"],
+            "fare": ["fare", "price"]
+        }
+
+        for keyword, possible_names in value_aliases.items():
+            if re.search(r"\b" + keyword + r"\b", q):
+                for column in numerical_columns:
+                    if normalize(column) in possible_names:
+                        value_candidates.append(column)
+
+                if value_candidates:
+                    break
+
+    value_column = (
+        value_candidates[0]
+        if len(value_candidates) == 1
+        else None
+    )
+
+    groupwise_keywords = [
+        "by", "each", "per", "among", "compare",
+        "group", "highest", "lowest"
+    ]
+
+    is_groupwise = (
+        group_column is not None
+        and value_column is not None
+        and any(
+            re.search(r"\b" + re.escape(word) + r"\b", q)
+            for word in groupwise_keywords
+        )
+    )
+
     return {
-        "is_groupwise": False,
-        "group_column": None,
-        "value_column": None
+        "is_groupwise": is_groupwise,
+        "group_column": group_column,
+        "value_column": value_column
     }
 
 # ============================================

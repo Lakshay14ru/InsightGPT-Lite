@@ -1,5 +1,10 @@
 venv/
-__pycache__/
-*.pyc
+**pycache**/
+*.py[cod]
 .env
+.env.*
+!.env.example
 vector_db/
+.pytest_cache/
+.coverage
+htmlcov/

@@ -328,19 +328,25 @@ Every analysis session can be exported as a polished PDF containing:
 
 ---
 
+
 ## 📸 Screenshots
 
-> Add screenshots to a `screenshots/` folder and reference them below.
+### Dashboard
 
-| Dashboard | Data Cleaning | AI Insights |
-|---|---|---|
-| `screenshots/dashboard.png` | `screenshots/cleaning.png` | `screenshots/ai_insights.png` |
+![InsightGPT Lite Dashboard](screenshots/dashboard.PNG)
 
-| Visualizations | RAG Retrieved Context | PDF Report |
-|---|---|---|
-| `screenshots/visualizations.png` | `screenshots/rag_context.png` | `screenshots/pdf_report.png` |
+### Data Visualizations
 
----
+![InsightGPT Lite Visualizations](screenshots/visualisation.PNG)
+
+### AI-Powered Insights
+
+![InsightGPT Lite AI Insights](screenshots/ai%20insight.PNG)
+
+### Data Cleaning
+
+![InsightGPT Lite Data Cleaning](screenshots/cleaning.PNG)
+
 
 ## 🏆 Development Phases
 

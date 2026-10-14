@@ -269,7 +269,7 @@ pip install -r requirements.txt
 ### 4. Configure your Gemini API key
 Create a `.env` file in the project root:
 ```env
-GEMINI_API_KEY=your_api_key_here
+GOOGLE_API_KEY=your_api_key_here
 ```
 > ⚠️ Never commit your `.env` file or real API key to GitHub.
 
